@@ -9,5 +9,14 @@ export const searchTracks = async (query) => {
     },
   });
 
-  return response.data.data;
+  let tracks = response.data.data;
+
+  return tracks.map((track) => ({
+    id: track.id,
+    title: track.title_short,
+    duration: track.duration,
+    picture: track.artist.picture_small,
+    album: track.album.title,
+    cover: track.album.cover_xl,
+  }));
 };
