@@ -1,6 +1,6 @@
-import { searchTracks } from "../services/deezer.service.js";
+import { searchTracks, searchGenres } from "../services/deezer.service.js";
 
-export const getSongs = async (request, response) => {
+export const getTracks = async (request, response) => {
   try {
     const query = request.query.q;
     if (!query) {
@@ -8,12 +8,24 @@ export const getSongs = async (request, response) => {
         message: "Query parameter q is required",
       });
     }
-    const songs = await searchTracks(query);
-    response.status(200).json(songs);
+    const tracks = await searchTracks(query);
+    response.status(200).json(tracks);
   } catch (error) {
     console.error(error);
     response.status(500).json({
-      message: "Error searching songs",
+      message: "Error searching tracks",
+    });
+  }
+};
+
+export const getGenres = async (request, response) => {
+  try {
+    const genres = await searchGenres();
+    response.status(200).json(genres);
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({
+      message: "Error searching genres",
     });
   }
 };

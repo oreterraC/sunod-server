@@ -20,3 +20,16 @@ export const searchTracks = async (query) => {
     cover: track.album.cover_xl,
   }));
 };
+
+// Search for genres
+export const searchGenres = async () => {
+  const response = await axios.get("https://api.deezer.com/genre");
+
+  let genres = response.data.data;
+
+  return genres.map((genre) => ({
+    id: genre.id,
+    name: genre.name,
+    picture: genre.picture_small,
+  }));
+};
