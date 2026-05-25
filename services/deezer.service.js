@@ -1,9 +1,10 @@
 import axios from "axios";
 import { urlencoded } from "express";
+import api from "./api.js";
 
 // Search for tracks
 export const searchTracks = async (query) => {
-  const response = await axios.get("https://api.deezer.com/search", {
+  const response = await api.get("/search", {
     params: {
       q: query,
     },
@@ -23,7 +24,7 @@ export const searchTracks = async (query) => {
 
 // Search for genres
 export const searchGenres = async () => {
-  const response = await axios.get("https://api.deezer.com/genre");
+  const response = await api.get("https://api.deezer.com/genre");
 
   let genres = response.data.data;
 
