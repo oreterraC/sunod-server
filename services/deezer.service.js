@@ -2,12 +2,7 @@ import axios from "axios";
 import { urlencoded } from "express";
 import api from "./api.js";
 
-// Search for top tracks
-export const searchTopTracks = async () => {
-  const response = await api.get("/chart/0/tracks");
-
-  let tracks = response.data.data;
-
+const mapTracks = (tracks) => {
   return tracks.map((track) => ({
     id: track.id,
     title: track.title_short,
@@ -16,6 +11,15 @@ export const searchTopTracks = async () => {
     album: track.album.title,
     cover: track.album.cover_xl,
   }));
+};
+
+// Search for top tracks
+export const searchTopTracks = async () => {
+  const response = await api.get("/chart/0/tracks");
+
+  let tracks = response.data.data;
+
+  return mapTracks(tracks);
 };
 
 // Search for tracks by word
@@ -28,17 +32,10 @@ export const searchTracks = async (query) => {
 
   let tracks = response.data.data;
 
-  return tracks.map((track) => ({
-    id: track.id,
-    title: track.title_short,
-    duration: track.duration,
-    picture: track.artist.picture_small,
-    album: track.album.title,
-    cover: track.album.cover_xl,
-  }));
+  return mapTracks(tracks);
 };
 
-// Search for genres
+// Search for all genres
 export const searchGenres = async () => {
   const response = await api.get("/genre");
 
@@ -51,4 +48,13 @@ export const searchGenres = async () => {
       name: genre.name,
       picture: genre.picture_small,
     }));
+};
+
+// Search for tracks by genre id
+export const searchTracksByGenre = async (id) => {
+  const response = await api.get(`/chart/${id}/tracks`);
+
+  let tracks = response.data.data;
+
+  return mapTracks(tracks);
 };
