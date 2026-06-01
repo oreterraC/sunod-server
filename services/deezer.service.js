@@ -1,6 +1,9 @@
-import axios from "axios";
 import { urlencoded } from "express";
+import axios from "axios";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import api from "./api.js";
+import User from "../models/User.js";
 
 const mapTracks = (tracks) => {
   return tracks.map((track) => ({
@@ -57,4 +60,34 @@ export const searchTracksByGenre = async (id) => {
   let tracks = response.data.data;
 
   return mapTracks(tracks);
+};
+
+// Register user
+export const signup = async (email, password) => {
+  const existingUser = await User.findOne({ where: email });
+
+  if (existingUser) {
+    throw new Error("User already exists");
+  }
+
+  const passwordHash = await bcrypt.hash(password, 10);
+  const user = await User.create({
+    email,
+    passwordHash,
+  });
+
+  return user;
+};
+
+// User login
+export const signin = async (email, password) => {
+  const user = await User.findOne({ where: { email } });
+  if (!user) {
+    throw new Error("Invalid credentials");
+  }
+  const validPassword = await bcrypt.compare(password, user.passwordHash);
+  if (!validPassword) throw new Error("Invalid credentials");
+  return jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+    expiresIn: "7d",
+  });
 };
