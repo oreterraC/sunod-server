@@ -42,7 +42,7 @@ npm install
 
 ### 3. Configurar variables de entorno
 
-Copy `.env.example` and rename it to `.env`, then fill in your values
+Copia `.env.example` y cámbiale el nombre a `.env`, luego introduce tus valores 
 
 ### 4. Ejecutar proyecto
 
