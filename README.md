@@ -19,6 +19,7 @@ Gestor inteligente de playlists
 
 - JavaScript
 - Axios
+- JWT
 - Node
 - Express
 
@@ -41,17 +42,7 @@ npm install
 
 ### 3. Configurar variables de entorno
 
-Crear archivo:
-
-```bash
-.env
-```
-
-Contenido:
-
-```env
-PORT=5000
-```
+Copia `.env.example` y cámbiale el nombre a `.env`, luego introduce tus valores 
 
 ### 4. Ejecutar proyecto
 
