@@ -2,7 +2,9 @@
 
 Gestor inteligente de playlists
 
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-blue)
+![axios](https://img.shields.io/badge/Axios-1-blue)
+![JWT](https://img.shields.io/badge/JWT-9-blue)
+![Sequelize](https://img.shields.io/badge/Sequelize-9-blue)
 ![Node](https://img.shields.io/badge/Node-22-blue)
 ![Express](https://img.shields.io/badge/Express-5-blue)
 ![License](https://img.shields.io/badge/License-ISC-green)
@@ -12,6 +14,8 @@ Gestor inteligente de playlists
 ## ✨ Características
 
 - Buscar canciones
+- Mostrar canciones por género
+- Autenticación
 
 ---
 
@@ -20,6 +24,7 @@ Gestor inteligente de playlists
 - JavaScript
 - Axios
 - JWT
+- Sequelize
 - Node
 - Express
 
@@ -79,9 +84,7 @@ https://api.deezer.com/
 
 ## 📈 Mejoras futuras
 
-- [ ] Mostrar canciones por género
 - [ ] Ordenar canciones por relevancia
-- [ ] Autenticación
 - [ ] Gestión de playlists
 - [ ] Géneros más escuchados
 - [ ] Artistas favoritos
