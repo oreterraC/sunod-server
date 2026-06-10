@@ -5,8 +5,8 @@ import api from "./api.js";
 import User from "../models/User.js";
 
 // Register user
-export const register = async (email, password) => {
-  const existingUser = await User.findOne({ where: { email } });
+export const register = async (username, password) => {
+  const existingUser = await User.findOne({ where: { username } });
 
   if (existingUser) {
     throw new Error("User already exists");
@@ -14,7 +14,7 @@ export const register = async (email, password) => {
 
   const passwordHash = await bcrypt.hash(password, 10);
   const user = await User.create({
-    email,
+    username,
     passwordHash,
   });
 
@@ -24,8 +24,8 @@ export const register = async (email, password) => {
 };
 
 // User login
-export const login = async (email, password) => {
-  const user = await User.findOne({ where: { email } });
+export const login = async (username, password) => {
+  const user = await User.findOne({ where: { username } });
   if (!user) {
     throw new Error("Invalid credentials");
   }

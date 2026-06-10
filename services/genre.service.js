@@ -1,4 +1,5 @@
 import api from "./api.js";
+import { mapTracks } from "./api.js";
 
 // Search for all genres
 export const searchGenres = async () => {
