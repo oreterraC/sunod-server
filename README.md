@@ -11,7 +11,7 @@ Gestor inteligente de playlists
 
 ---
 
-## ✨ Características
+## ✨ Funcionalidades
 
 - Buscar canciones
 - Mostrar canciones por género
