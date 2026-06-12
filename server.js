@@ -2,6 +2,8 @@ import dotenv from "dotenv";
 import app from "./app.js";
 import sequelize from "./configuration/database.js";
 import "./models/User.js";
+import "./models/Playlist.js";
+import "./models/Playlist_track.js";
 
 dotenv.config();
 
