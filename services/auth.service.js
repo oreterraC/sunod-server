@@ -36,9 +36,9 @@ export const login = async (username, password) => {
   });
 };
 
-export const searchUsername = async (userId) => {
+export const searchUser = async (userId) => {
   const user = await User.findByPk(userId, {
-    attributes: ["username"],
+    attributes: ["username", "createdAt"],
   });
-  return user?.username;
+  return user;
 };

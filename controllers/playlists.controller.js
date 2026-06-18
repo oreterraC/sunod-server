@@ -1,4 +1,3 @@
-import { searchUsername } from "../services/auth.service.js";
 import { searchPlaylists } from "../services/playlist.service.js";
 
 export const getPlaylists = async (request, response) => {
