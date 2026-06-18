@@ -35,3 +35,10 @@ export const login = async (username, password) => {
     expiresIn: "7d",
   });
 };
+
+export const searchUsername = async (userId) => {
+  const user = await User.findByPk(userId, {
+    attributes: ["username"],
+  });
+  return user?.username;
+};

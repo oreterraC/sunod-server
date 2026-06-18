@@ -11,8 +11,6 @@ const Playlist = sequelize.define("Playlist", {
     allowNull: false,
     unique: true,
   },
-  createdAt: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
 });
+
+export default Playlist;
